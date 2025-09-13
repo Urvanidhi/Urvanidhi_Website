@@ -1,5 +1,5 @@
 "use client";
-import Link from "next/link";
+
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
@@ -7,15 +7,10 @@ import { FiMenu, FiX } from "react-icons/fi";
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 10);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const [activeSection, setActiveSection] = useState("");
 
   const navItems = [
-    { href: "#hero", label: "Home" },
+    { href: "#home", label: "Home" },
     { href: "#about", label: "About Us" },
     { href: "#products", label: "Products & Services" },
     { href: "#team", label: "Team" },
@@ -24,70 +19,104 @@ const Navbar = () => {
     { href: "#contact", label: "Contact Us" },
   ];
 
+  // Track scroll for active section
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+      let current = "";
+      navItems.forEach((item) => {
+        if (item.href === "#home") return;
+        const section = document.querySelector(item.href);
+        if (section) {
+          const top = section.getBoundingClientRect().top;
+          if (top <= 80) current = item.href;
+        }
+      });
+      setActiveSection(current || "#home");
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const scrollToSection = (href: string) => {
+    if (href === "#home") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      const section = document.querySelector(href);
+      section?.scrollIntoView({ behavior: "smooth" });
+    }
+    setMobileOpen(false);
+  };
+
   return (
-    <nav
-      className={`fixed top-0 w-full z-50 transition-colors duration-300 ${
-        scrolled ? "bg-white shadow-md" : "bg-transparent"
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
-        {/* Logo + Brand */}
-        <Link
-          href="#hero"
-          className="flex items-center space-x-3 whitespace-nowrap flex-shrink-0"
+    <nav className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 transition-all duration-300">
+      <div
+        className={`flex items-center justify-between px-6 py-3 rounded-3xl shadow-xl backdrop-blur-md transition-all duration-300 ${
+          scrolled
+            ? "bg-gradient-to-r from-green-700 via-green-600 to-green-500"
+            : "bg-gradient-to-r from-green-900 via-green-800 to-green-700"
+        } w-[90vw] sm:w-[85vw] md:w-[75vw] lg:w-[70vw] font-inter`}
+      >
+        {/* Logo */}
+        <div
+          className="flex items-center space-x-3 cursor-pointer hover:scale-105 transition-transform"
+          onClick={() => scrollToSection("#home")}
         >
           <Image
             src="/favicon_color.png"
             alt="Urvanidhi Agritech LLP Logo"
-            width={55}
-            height={55}
-            className="drop-shadow-md"
+            width={50}
+            height={50}
+            className="rounded-full drop-shadow-lg"
           />
-          <span className="text-2xl md:text-3xl font-extrabold tracking-wide text-green-800 font-serif">
-            Urvanidhi <span className="text-green-600">Agritech</span>{" "}
-            <span className="text-gray-500 text-sm font-medium">LLP</span>
-          </span>
-        </Link>
+          <div className="flex flex-col">
+            <span className="text-xl md:text-2xl font-extrabold text-white tracking-wider">
+              Urvanidhi
+            </span>
+            <span className="text-green-200 font-medium text-sm md:text-base tracking-wide">
+              Agritech LLP
+            </span>
+          </div>
+        </div>
 
         {/* Desktop Links */}
-        <div className="hidden lg:flex flex-1 justify-end space-x-4 text-gray-700 font-medium text-base font-sans">
+        <div className="hidden lg:flex flex-1 justify-end items-center space-x-3 text-white">
           {navItems.map((item) => (
-            <Link
+            <button
               key={item.href}
-              href={item.href}
-              className="relative whitespace-nowrap px-3 py-1 rounded-md transition-colors duration-300 hover:bg-green-200 hover:text-green-900"
+              onClick={() => scrollToSection(item.href)}
+              className={`px-4 py-1 rounded-full font-medium transition-all duration-300 relative group hover:scale-105 hover:cursor-pointer`}
             >
               {item.label}
-            </Link>
+              <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-white transition-all group-hover:w-full"></span>
+            </button>
           ))}
         </div>
 
-        {/* Tablet & Mobile Hamburger */}
+        {/* Mobile Hamburger */}
         <div className="lg:hidden">
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="text-gray-700 hover:text-green-800 focus:outline-none"
+            className="text-white hover:text-green-200 focus:outline-none hover:cursor-pointer"
           >
             {mobileOpen ? <FiX size={28} /> : <FiMenu size={28} />}
           </button>
         </div>
       </div>
 
-      {/* Mobile / Tablet Menu */}
+      {/* Mobile Menu */}
       {mobileOpen && (
-        <div className="lg:hidden bg-white shadow-lg">
-          <div className="flex flex-col px-4 py-4 space-y-2">
-            {navItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                onClick={() => setMobileOpen(false)}
-                className="px-3 py-2 rounded-md text-gray-700 font-medium text-base hover:bg-green-200 hover:text-green-900 transition-colors duration-300"
-              >
-                {item.label}
-              </Link>
-            ))}
-          </div>
+        <div className="lg:hidden mt-2 bg-green-800/95 backdrop-blur-md shadow-lg rounded-3xl px-4 py-4 flex flex-col space-y-2 text-white w-[90vw] sm:w-[85vw] md:w-[75vw] lg:w-[70vw] mx-auto font-inter">
+          {navItems.map((item) => (
+            <button
+              key={item.href}
+              onClick={() => scrollToSection(item.href)}
+              className="px-4 py-2 rounded-full font-medium transition-all duration-300 hover:bg-white/20 hover:cursor-pointer"
+            >
+              {item.label}
+            </button>
+          ))}
         </div>
       )}
     </nav>
