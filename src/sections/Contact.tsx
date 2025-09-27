@@ -188,7 +188,7 @@ const Contact = () => {
               <FiPhone className="text-green-700 text-3xl" />
               <div>
                 <p className="font-semibold text-green-900">Phone</p>
-                <p className="text-green-800">Your number will reach us here</p>
+                <p className="text-green-800">9900943005</p>
               </div>
             </div>
 

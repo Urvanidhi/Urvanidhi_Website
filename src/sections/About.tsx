@@ -44,13 +44,12 @@ const About = () => (
         </h2>
         <p className="mt-4 text-base sm:text-lg text-gray-700 max-w-3xl sm:max-w-4xl mx-auto animate-fadeIn [animation-delay:200ms] leading-relaxed">
           <span className="font-semibold text-green-700">Urvanidhi</span> is
-          redefining agricultural progress by blending{" "}
+          redefining agricultural progress, {" "}
           <span className="font-semibold text-green-800">
-            modern science with a deep commitment to farmer success
+            merging the power of modern science with a deep commitment to farmer success
           </span>
-          . Our mission is clear: to empower farmers with intelligent
-          technologies and forward-thinking strategies that make agriculture
-          smarter, sustainable, and consistently profitable.
+          . Our mission is clear: to empower farmers  through intelligent technologies and forward-thinking strategies 
+          that make agriculture smarter, more sustainable, and consistently profitable.
         </p>
       </div>
 
@@ -64,18 +63,18 @@ const About = () => (
           },
           {
             icon: "🌾",
-            title: "Resilient Crops",
-            desc: "Boosting plant health and protecting against weather, pests, and other challenges.",
+            title: "Yield More. Worry Less.",
+            desc: "Our advanced nutrition solutions help crops thrive against stress, pests, and changing weather.",
           },
           {
             icon: "🤝",
-            title: "Farmer First",
-            desc: "We partner with farmers at every stage, not just deliver products.",
+            title: "Farmer First, Every Step of the Way.",
+            desc: "At Urvanidhi, farmers are at the heart of all we do. We support them at every stage—from planning to harvest and beyond.",
           },
           {
             icon: "🌍",
-            title: "Responsible Farming",
-            desc: "Convenient, scalable, and environmentally conscious solutions for all.",
+            title: "Sustainable Soil-Centric Farming",
+            desc: "Our solutions are engineered to be highly convenient and scalable to enhance the natural vitality of the soil",
           },
         ].map((item, i) => (
           <div
@@ -160,30 +159,17 @@ const About = () => (
             Our Story
           </h3>
           <p className="text-gray-700 text-sm sm:text-base leading-relaxed mb-4">
-            Urvanidhi didn’t start as farmers—we started with{" "}
-            <span className="font-semibold text-green-700">
-              passion and respect for farming
-            </span>
-            . Seeing the challenges of rising costs, weather uncertainty, and
-            limited access to modern tools, we felt a strong call to act.
+            Urvanidhi was born from a deep passion for farming and an unwavering respect for farmers. Facing rising costs, 
+            unpredictable weather, and limited access to modern tools, we united a team of agronomists, nutritionists, 
+            and technologists who share one belief: sustainable farming begins with a focus on the farmer and soil health.
           </p>
           <p className="text-gray-700 text-sm sm:text-base leading-relaxed mb-4">
-            Our journey began with experts, agronomists, nutritionists, and
-            technologists who shared one belief:{" "}
-            <span className="font-semibold text-green-700">
-              better farming begins with better nutrition
-            </span>
-            . By focusing on soil health, root zone care, and plant resilience,
-            we developed solutions that go beyond quick fixes.
+            Our solutions nurture the root zone and enhance plant resilience, going beyond quick fixes to create lasting growth. 
+            Today, Urvanidhi is a dedicated team of scientists, supply chain experts, and field professionals working 
+            hand-in-hand with farmers to build thriving, sustainable, and scalable agricultural communities centered 
+            on soil vitality and farmer prosperity.
           </p>
-          <p className="text-gray-700 text-sm sm:text-base leading-relaxed">
-            Today, Urvanidhi is more than a company—it’s{" "}
-            <span className="font-semibold text-green-700">
-              a team of scientists, supply chain specialists, and field experts
-            </span>{" "}
-            working hand-in-hand with farmers to build sustainable, scalable,
-            and prosperous farming communities.
-          </p>
+          
         </div>
         <div className="relative h-56 sm:h-72 rounded-xl overflow-hidden shadow-md animate-fadeIn [animation-delay:200ms]">
           <img

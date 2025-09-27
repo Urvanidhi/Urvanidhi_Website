@@ -4,10 +4,10 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
 const metrics = [
-  { label: "Farmers Empowered", value: 1200 },
-  { label: "Crops Protected", value: 3500 },
+  { label: "Farmers Empowered", value: 1000 },
+  { label: "Acres covered", value: 1500 },
   { label: "Solutions Delivered", value: 18 },
-  { label: "Years of Innovation", value: 5 },
+  { label: "Years of Innovation", value: 8 },
 ];
 
 const slides = [
@@ -115,7 +115,7 @@ const Hero = () => {
                 ease: "easeInOut",
               }}
             >
-              Rooting for You.
+              Redefining the Future of Farming.
             </motion.h1>
             <motion.span
               className="text-green-600 text-lg md:text-xl mt-2"
@@ -128,7 +128,7 @@ const Hero = () => {
                 delay: 1,
               }}
             >
-              Smart farming, happier harvests.
+              Smart Farming, Better Harvest.
             </motion.span>
           </motion.div>
 
@@ -140,11 +140,11 @@ const Hero = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            Harnessing{" "}
+            Uniting{" "}
             <span className="font-semibold text-green-700">
-              innovation, science, and sustainability
+              science, sustainability, and forward-thinking innovation
             </span>{" "}
-            to empower farmers and cultivate a resilient future.
+            to foster farmer empowerment and lasting agricultural prosperity.
           </motion.p>
 
           {/* Metrics */}
