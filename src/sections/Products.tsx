@@ -166,7 +166,7 @@ const Products = () => {
             Products & Services
           </h2>
           <p className="mt-3 text-green-700 max-w-3xl mx-auto text-xl">
-            Scientifically formulated, farmer-tested agricultural solutions for Karnataka's key crops
+            Scientifically formulated, farmer-tested agricultural solutions for Karnataka&rsquo;s key crops
           </p>
         </div>
 
